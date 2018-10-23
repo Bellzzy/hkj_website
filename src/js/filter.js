@@ -1,14 +1,5 @@
 import Vue from 'vue'
 
-Vue.filter('yesOrNo', function(val) {
-	if('1' == val) {
-		return '是'
-	} else if('0' == val) {
-		return '否';
-	} else {
-		return val;
-	}
-})
 Vue.filter('dateFormat', (val, fm) => {
 	if(!val) return;
 	var date = new Date(val),

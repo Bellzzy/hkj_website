@@ -30,7 +30,7 @@ export default {
 				user: sessionStorage.getItem('HKJGROUPMANAGERUSER')
 			}
 			if(data.npwd.length < 6) {
-				alert('密码长度不能小于6位数')
+				this.$message('密码长度不能小于6位数')
 				return
 			}
 			if(!data.user) {
@@ -43,13 +43,13 @@ export default {
 				}
 			}).then(res => {
 				if('ok' == res) {
-					alert('密码修改成功，请重新登录.')
+					this.$message('密码修改成功，请重新登录.')
 					sessionStorage.clear();
 					this.$router.push({
 						path: '/'
 					})
 				} else {
-					alert('修改失败')
+					this.$message('修改失败')
 				}
 				this.onSubmit = false;
 			}).catch(err => {

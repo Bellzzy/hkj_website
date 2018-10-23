@@ -99,19 +99,19 @@ export default {
 				url = '/manager/dbopt/contadd.asp'
 			}
 			if(!this.detail.title) {
-				alert('请输入标题')
+				this.$message('请输入标题')
 				return
 			}
 			if(!this.detail.tid) {
-				alert('请选择文章分类')
+				this.$message('请选择文章分类')
 				return
 			}
 			if(!this.detail.addtime) {
-				alert('请添加发布时间')
+				this.$message('请添加发布时间')
 				return
 			}
 			if(this.detail.weights.length == 0) {
-				alert('权重不能为空。')
+				this.$message('权重不能为空。')
 				return
 			}
 			this.onSubmit = true
@@ -133,7 +133,7 @@ export default {
 						})
 					}
 				} else {
-					alert('修改失败')
+					this.$message('保存失败')
 				}
 				this.onSubmit = false;
 			}).catch(err => {

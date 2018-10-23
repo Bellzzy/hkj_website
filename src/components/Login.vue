@@ -19,7 +19,8 @@ export default {
 			login: {
 				usn: '',
 				pwd: ''
-			}
+			},
+			msg: ''
 		}
 	},
 	methods: {
@@ -27,12 +28,13 @@ export default {
 			if(this.onLoading) return;
 			let usn = this.login.usn,
 				pwd = this.login.pwd;
+			this.msg = ''
 			if(/^\s*$/g.test(usn) || 'undefined' == typeof(usn)) {
-				this.$message.error('帐户不能为空.');
+				this.$message('帐户不能为空.')
 				return;
 			}
 			if(/^\s*$/g.test(pwd) || 'undefined' == typeof(pwd)) {
-				this.$message.error('密码不能为空.');
+				this.$message('密码不能为空.')
 				return;
 			}
 			this.axios.post('/manager/dbopt/login.asp', qs.stringify(this.login), {
@@ -44,7 +46,7 @@ export default {
 					sessionStorage.setItem('HKJGROUPMANAGERUSER', this.login.usn)
 					this.$router.push({path:'/main', query: {link: 'home'}})
 				} else {
-					this.$message.error('登录失败')
+					this.$message('用户名或密码错误.')
 				}
 				this.onLoading = false;
 			}).catch(() => {

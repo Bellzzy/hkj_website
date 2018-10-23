@@ -5,32 +5,24 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-// import ElementUI from 'element-ui'
 import commonComponents from './components/common'
-
-// import '../static/UE/ueditor.config.js'
-// import '../static/UE/ueditor.all.min.js'
-// import '../static/UE/lang/zh-cn/zh-cn.js'
-// import '../static/UE/ueditor.parse.min.js'
-
-// import 'element-ui/lib/theme-chalk/index.css'
-// import './assets/common.styl'
 import './assets/main.styl'
-// 指令
-import './js/directive.js'
-// 通用方法
-import './js/util.js'
 // 过滤器
 import './js/filter.js'
-// 表单校验
-import validate from './js/validate.js'
-
-Vue.prototype.__Valid = validate;
+Vue.prototype.$message = function(msg) {
+  let $dom = document.createElement('div');
+  $dom.setAttribute('id', 'msg')
+  $dom.innerHTML = msg;
+  document.body.appendChild($dom)
+  let timer = setTimeout(() => {
+    document.body.removeChild($dom)
+    timer = null
+  }, 2000)
+};
 
 Vue.config.productionTip = false
 Vue.config.silent = true
 
-// Vue.use(ElementUI);
 Vue.use(commonComponents);
 Vue.use(VueAxios, axios);
 
@@ -44,7 +36,7 @@ const vm = new Vue({
     // 文章分类
     cateList: [],
     // 当前登录用户，用户判断是否登录
-    usn: ''
+    usn: '',
   },
   template: '<App/>'
 })

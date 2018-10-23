@@ -48,6 +48,8 @@ export default {
 			}).then(res => {
 				if('ok' == res) {
 					this.getList()
+				} else {
+					this.$message('删除失败')
 				}
 			})
 		}

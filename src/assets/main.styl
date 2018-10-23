@@ -159,3 +159,33 @@ ul
 		width: 100%
 		vertical-align: middle
 		display: inline-block
+#msg
+	color: #f00
+	font-size: 12px
+	top: -30px
+	left: 50%
+	transform: translateX(-50%)
+	height: 30px
+	line-height: 30px
+	background-color: #fff
+	padding: 0 10px
+	border-radius: 4px
+	position: absolute
+	box-shadow: 0 0 10px rgba(0, 0, 0, .2)
+	animation: showMsg 1.8s ease-in-out
+	z-index: 999
+		
+@keyframes showMsg {
+	0% {
+		top: -30px
+	}
+	20% {
+		top: 30px
+	}
+	80% {
+		top: 30px
+	}
+	100% {
+		top: -30px
+	}
+}
